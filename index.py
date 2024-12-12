@@ -56,6 +56,6 @@ def generate_tiles(input_svg, output_folder, tile_size=256, zoom_levels=5):
     os.remove(temp_png)
 
 # Example usage
-input_svg = "mt.svg"  # Path to your input SVG file
+input_svg = "SVG_Human_With_All_Organs.svg"  # Path to your input SVG file
 output_folder = "output_tiles"  # Directory to save the tiles
 generate_tiles(input_svg, output_folder)
