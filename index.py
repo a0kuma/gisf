@@ -2,7 +2,7 @@ import os
 import math
 from PIL import Image, ImageOps
 import subprocess
-
+Image.MAX_IMAGE_PIXELS = None
 def svg_to_png(svg_file, png_file, width, height):
     """Convert an SVG file to a PNG file with specified dimensions using ImageMagick."""
     subprocess.run([
@@ -12,7 +12,7 @@ def svg_to_png(svg_file, png_file, width, height):
         png_file
     ], check=True)
 
-def generate_tiles(input_svg, output_folder, tile_size=256, zoom_levels=13):
+def generate_tiles(input_svg, output_folder, tile_size=256, zoom_levels=8):
     """Generate TMS tiles from an SVG file."""
     # Ensure output directory exists
     os.makedirs(output_folder, exist_ok=True)
