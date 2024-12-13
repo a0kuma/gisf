@@ -2,12 +2,13 @@ import os
 import math
 from PIL import Image, ImageOps
 import cairosvg
+Image.MAX_IMAGE_PIXELS = None
 
 def svg_to_png(svg_file, png_file, width, height):
     """Convert an SVG file to a PNG file with specified dimensions."""
     cairosvg.svg2png(url=svg_file, write_to=png_file, output_width=width, output_height=height)
 
-def generate_tiles(input_svg, output_folder, tile_size=256, zoom_levels=6):
+def generate_tiles(input_svg, output_folder, tile_size=256, zoom_levels=7):
     """Generate TMS tiles from an SVG file."""
     # Ensure output directory exists
     os.makedirs(output_folder, exist_ok=True)
