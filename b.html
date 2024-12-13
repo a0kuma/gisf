@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        img {
+            height: 100vh;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .prev-button {
+            left: 10px;
+        }
+        .next-button {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="nav-button prev-button" onclick="navigatePage(-1)">&#9664;</button>
+    <button class="nav-button next-button" onclick="navigatePage(1)">&#9654;</button>
+    <script>
+        window.onload = function() {
+            const pageNum = window.location.hash.replace('#', '');
+            if (pageNum) {
+                const img = document.createElement('img');
+                img.src = `./books/cmd_頁面_${pageNum}.jpg`;
+                document.body.appendChild(img);
+            }
+        }
+        function navigatePage(offset) {
+            let pageNum = parseInt(window.location.hash.replace('#', '')) || 1;
+            pageNum += offset;
+            pageNum = pageNum.toString().padStart(3, '0');
+            window.location.hash = pageNum;
+            if (pageNum < 1) pageNum = 1;
+            const img = document.querySelector('img');
+            if (img) {
+                img.src = `./books/cmd_頁面_${pageNum}.jpg`;
+            } else {
+                const img = document.createElement('img');
+                img.src = `./books/cmd_頁面_${pageNum}.jpg`;
+                document.body.appendChild(img);
+            }
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

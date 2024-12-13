@@ -24,7 +24,10 @@ fs.readFile(filename, 'utf8', (err, data) => {
             ddb2 = JSON.parse(data2);
             var itt = 0;
             ddb.forEach(item => {
-                var fd;
+                var fd={
+                    "name": "na",
+                    "price": "1"
+                  };
                 dpap.forEach(da => {
                         if (da.name === item.name) {
                             fd = da;
@@ -47,8 +50,8 @@ fs.readFile(filename, 'utf8', (err, data) => {
                             'lat': Number(found.lat) + itt / 100000.0,
                             'lng': Number(found.lng) + itt / 100000.0,
                             'text': item.context,
-                            'url': 'https://example.com',
-                            'img': 'https://upload.wikimedia.org/wikipedia/en/4/48/Blank.JPG',
+                            'url': `https://a0kuma.github.io/gisf/b.html#${(parseInt(fd.price)).toString().padStart(3, '0')}`,
+                            'img': `https://a0kuma.github.io/gisf/imgs/${item.name}中藥.jpg`,
                             'markerColor': '#ddb98b',
                             'markerLine': 1,
                             'markerSize': 18,
@@ -66,8 +69,8 @@ fs.readFile(filename, 'utf8', (err, data) => {
                                 'lat': Number(found2.lat) + itt / 100000.0,
                                 'lng': Number(found2.lng) + itt / 100000.0,
                                 'text': item.context,
-                                'url': 'https://example.com',
-                                'img': 'https://upload.wikimedia.org/wikipedia/en/4/48/Blank.JPG',
+                                'url': `https://a0kuma.github.io/gisf/b.html#${(parseInt(fd.price)).toString().padStart(3, '0')}`,
+                                'img': `https://a0kuma.github.io/gisf/imgs/${item.name}中藥.jpg`,
                                 'markerColor': '#ddb98b',
                                 'markerLine': 1,
                                 'markerSize': 18,
@@ -79,7 +82,7 @@ fs.readFile(filename, 'utf8', (err, data) => {
 
                 });
             });
-            fs.writeFile('medCv5.json', JSON.stringify(newM), err => {
+            fs.writeFile('medCv8.json', JSON.stringify(newM), err => {
                 if (err) {
                     console.error(err);
                 }
